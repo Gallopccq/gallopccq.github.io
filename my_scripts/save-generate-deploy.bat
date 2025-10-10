@@ -1,3 +1,4 @@
+cd ..
 git pull origin source
 git add .
 git commit -m "add a post"
