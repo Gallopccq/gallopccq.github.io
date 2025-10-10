@@ -261,6 +261,9 @@
         <p>工作原理：在本地编辑好文档后，将代码上传到仓库的source分支，并在本地渲染并上传（hexo clean &amp;&amp; hexo g &amp;&amp; hexo d），这样就将渲染好的代码上传到仓库的main分支。</p>
 <p>命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git pull origin <span class="built_in">source</span></span><br><span class="line">git add . </span><br><span class="line">git commit -m <span class="string">&quot;add some blog&quot;</span></span><br><span class="line">git push origin <span class="built_in">source</span></span><br><span class="line">hexo clean</span><br><span class="line">hexo g <span class="comment"># 如果需要可hexo s在本地查看效果</span></span><br><span class="line">hexo d </span><br></pre></td></tr></table></figure>
+
+<p>部署hexo</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo</span><br><span class="line">npm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
