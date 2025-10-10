@@ -1,0 +1,62 @@
+Based on the provided transcript, here is a summary of the key points from the interview with the Theory team about their AI Cyber Challenge (AICC) entry:
+
+Team Overview
+
+• Team Theory is an industry team with 8 members split between the U.S. and South Korea. Most have a CTF background, while two members specialize in AI/evaluation.
+
+• They participated in AICC to stay at the cutting edge of AI and security, leveraging their experience from past competitions like the Cyber Grand Challenge (CGC).
+
+CRS Design: RoboDuck
+
+• Their Cyber Reasoning System (CRS), named RoboDuck, is built around a heavy use of LLM (Large Language Model) agents.
+
+• Architecture: A single Python process coordinates work, dispatching jobs to remote Docker hosts for dedicated tasks (e.g., fuzzing, compilation).
+
+• Key Approach: They designed agents to mimic human problem-solving strategies but with guardrails to prevent sidetracking. The system is highly modular, with agents handling specific tasks like static analysis, debugging, patch generation, and proof-of-vulnerability (PoV) creation.
+
+Workflow Highlights
+
+1. Building: Multiple builds are created for each project (e.g., with sanitizers, debug info) to support different analysis techniques.
+2. Static Analysis: 
+   • Use off-the-shelf tools (e.g., Infer) and custom LLM-based static analysis to identify potential vulnerabilities.
+
+   • A classifier agent filters false positives, reducing candidates from thousands to ~100 high-confidence bugs.
+
+3. Dynamic Analysis:
+   • Fuzzing is used but is secondary to the LLM-driven approach.
+
+   • Branch Flipper Agent: Guides fuzzing to explore new code paths when stuck.
+
+4. PoV and Patching:
+   • PoV Producer Agent: Writes Python code to generate inputs triggering vulnerabilities.
+
+   • Patcher Agent: Creates patches for identified bugs.
+
+   • Harness Input Encoder/Decoder Agents: Translate between binary inputs and semantic representations for LLM understanding.
+
+5. Submission Strategy:
+   • Submit patches even without PoVs if they have high confidence (e.g., 2 patches without PoVs for every 1 with PoV).
+
+   • Focus on deduplication and root cause analysis to avoid redundant submissions.
+
+Technical Insights
+
+• Codebase: ~20,000 lines of Python, with some Rust for performance-critical parts. ~2,000 lines of prompts for agents.
+
+• Models Used: Primarily Anthropic’s Sonnet 3.5/4 and OpenAI’s o3, chosen for cost-effectiveness and performance.
+
+• Challenges: Ensuring system stability over long runs, handling untrusted code, and managing LLM quirks (e.g., irrelevant responses, syntax errors in patches).
+
+Outlook on AI
+
+• Bullish on AI Agents: Their experience showed LLM agents can automate complex tasks like vulnerability detection and exploitation, with significant untapped potential.
+
+• Future Plans: Explore commercial applications post-competition, integrating their CRS into Theory’s security offerings.
+
+Competition Expectations
+
+• Goals: Aim for top three, but acknowledge risks (e.g., system failures, unknown strategies from other teams).
+
+• Reflections: Wish they had started earlier to refine infrastructure and explore more ideas. Value the open-ended nature of AICC compared to past competitions like CGC.
+
+This summary captures the core aspects of Theory’s CRS design, their workflow, and their perspective on AI’s role in cybersecurity.
