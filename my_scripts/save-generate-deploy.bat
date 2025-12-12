@@ -5,3 +5,4 @@ git commit -m "add a post"
 git push origin source
 hexo g
 hexo d
+pause
